@@ -1,5 +1,7 @@
 import { Box, Card, CardContent, Typography} from "@mui/material";
 import { useLocation } from "react-router-dom";
+import { QuadListItem } from "../QuadListItem/QuadListItem";
+import { QuadList } from "../QuadList/QuadList";
 
 const cardStyle = {
     backgroundColor: 'transparent',
@@ -14,17 +16,7 @@ function ConfigCard(props) {
     console.log(location);
 
     return (
-        <Box sx={{maxWidth:200}}>
-            <Card variant="outlined" style={cardStyle}>
-                <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
-                    <CardContent>
-                    <Typography sx={{ fontSize: 28, opacity:1 }} color="text.primary" align="center" gutterBottom variant="h1">
-                        {"I am here"}
-                    </Typography>
-                    </CardContent>
-                </div>
-            </Card>
-        </Box>
+        <QuadList numQuads={(location.state.seats * location.state.rounds * location.state.qpRound)/4}/>
     );
 }
 
