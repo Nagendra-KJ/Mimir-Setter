@@ -1,6 +1,9 @@
-import { CssBaseline, Box } from '@mui/material';
+import { CssBaseline} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { ConfigInput } from './components/ConfigInput/ConfigInput';
+import { ButtonChoice } from './components/ButtonChoice/ButtonChoice';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ConfigCard } from './components/ConfigCard/ConfigCard';
 
 const darkTheme = createTheme({
   palette: {
@@ -17,16 +20,16 @@ const darkTheme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline/>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="cemter"
-        minHeight="100vh">
-          <ConfigInput/>
-      </Box>
-    </ThemeProvider>
+    <BrowserRouter>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline/>
+          <Routes>
+            <Route path="/" element={<ButtonChoice/>}/>
+            <Route path="config" element={<ConfigInput/>}/>
+            <Route path="layout" element={<ConfigCard/>}/>
+          </Routes> 
+        </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
